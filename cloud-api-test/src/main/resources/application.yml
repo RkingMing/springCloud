@@ -1,0 +1,23 @@
+server:
+  port: 8889
+
+age: 15
+
+spring:
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+  profiles:
+    active: test
+---
+spring:
+  profiles: dev
+server:
+  port: 8080
+name: ranbing
+---
+spring:
+  profiles: test
+server:
+  port: 8181
+name: test

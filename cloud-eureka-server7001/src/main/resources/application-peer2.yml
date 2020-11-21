@@ -1,0 +1,26 @@
+server:
+  port: 7002
+  servlet:
+    context-path: /
+spring:
+  application:
+    name: cloud-eureka-server
+
+eureka:
+  instance:
+    hostname: peer2
+    prefer-ip-address: true
+  client:
+    fetch-registry: true  #不注册自己
+    register-with-eureka: true # 不检索自己
+    service-url:
+#      defaultZone: http://www.eureka7002.com:7002/eureka/
+      defaultZone: http://peer1:7001/eureka/,http://peer3:7003/eureka/
+  server:
+    #关闭自我保护机制，保证不可用服务立即被踢出
+    enable-self-preservation: false
+    eviction-interval-timer-in-ms: 2000
+
+logging:
+  level:
+    com.netflix: warn
